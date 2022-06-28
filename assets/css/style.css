@@ -1,0 +1,37 @@
+/*  */
+#open {
+    background: #1474ff url('../img/bg.png') no-repeat;
+    background-size: cover cover;
+    min-height: 100vh;
+}
+
+.vs-dialog footer,
+.vs-dialog header {
+    display: none !important;
+}
+
+.vs-dialog-text {
+    align-items: center;
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+    padding-bottom: 16px !important;
+    padding-top: 8px !important;
+
+}
+.con-vs-dialog .vs-dialog {
+    max-width: 600px !important;
+    border: 1px solid #1474ff;
+}
+.text-blue-500 {
+    color: #1474ff !important;
+}
+
+.bg-blue-500 {
+    background-color: #1474ff !important;
+}
+
+#header {
+    min-height: 350px;
+    background: #1474ff url('../img/AreadaEmpresa.png') no-repeat;
+    
+}
