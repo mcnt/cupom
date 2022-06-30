@@ -1,13 +1,23 @@
 <template>
     <nav class="text-white flex justify-end space-x-4">
-        <span>Olá <b>Felipe Cadena</b></span>
-        <span>Criar Usuário</span>
-        <span class="text-yellow-500">Sair</span>
+        <span>
+            Olá <b>{{ $auth.user.name }}</b>
+        </span>
+        <NuxtLink v-if="$auth.user.level === 1" to="/admin">
+            Criar Usuário
+        </NuxtLink>
+        <button class="text-yellow-500" @click.prevent="logout()">Sair</button>
     </nav>
 </template>
 
 <script>
 export default {
     name: 'ComNav',
+    methods: {
+        logout() {
+            this.$auth.logout()
+            this.$router.push('/')
+        },
+    },
 }
 </script>

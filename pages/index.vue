@@ -54,14 +54,24 @@ export default {
     data: () => ({
         show: false,
         form: {
-            cpf: '',
-            password: '',
+            cpf: '70364669012',
+            password: '123456',
         },
     }),
 
     methods: {
-        login() {
-            this.$router.push('/painel')
+        async login() {
+            await this.$auth
+                .loginWith('api', {
+                    data: {
+                        cpf: this.form.cpf.replace(/[^0-9]/g, ''),
+                        password: this.form.password,
+                    },
+                })
+                .then(() => {
+                    this.$router.push('/painel')
+                })
+                .catch(() => {})
         },
     },
 }

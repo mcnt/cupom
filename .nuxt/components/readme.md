@@ -9,3 +9,5 @@ You can directly use them in pages and other components without the need to impo
 - `<Logo>` | `<logo>` (components/Logo.vue)
 - `<Navbar>` | `<navbar>` (components/Navbar.vue)
 - `<Voucher>` | `<voucher>` (components/Voucher.vue)
+- `<AdminPopup>` | `<admin-popup>` (components/Admin/Popup.vue)
+- `<ClientHeader>` | `<client-header>` (components/Client/Header.vue)

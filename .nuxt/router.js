@@ -4,9 +4,9 @@ import { normalizeURL, decode } from 'ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _249cb956 = () => interopDefault(import('../pages/areaEmpresa.vue' /* webpackChunkName: "pages/areaEmpresa" */))
-const _0affe1f4 = () => interopDefault(import('../pages/painel.vue' /* webpackChunkName: "pages/painel" */))
-const _612772aa = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _53c1c587 = () => interopDefault(import('../pages/admin.vue' /* webpackChunkName: "pages/admin" */))
+const _14df12f5 = () => interopDefault(import('../pages/painel.vue' /* webpackChunkName: "pages/painel" */))
+const _2252718a = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 const emptyFn = () => {}
 
@@ -20,16 +20,16 @@ export const routerOptions = {
   scrollBehavior,
 
   routes: [{
-    path: "/areaEmpresa",
-    component: _249cb956,
-    name: "areaEmpresa"
+    path: "/admin",
+    component: _53c1c587,
+    name: "admin"
   }, {
     path: "/painel",
-    component: _0affe1f4,
+    component: _14df12f5,
     name: "painel"
   }, {
     path: "/",
-    component: _612772aa,
+    component: _2252718a,
     name: "index"
   }],
 

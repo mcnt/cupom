@@ -1,6 +1,8 @@
 export { default as Logo } from '../../components/Logo.vue'
 export { default as Navbar } from '../../components/Navbar.vue'
 export { default as Voucher } from '../../components/Voucher.vue'
+export { default as AdminPopup } from '../../components/Admin/Popup.vue'
+export { default as ClientHeader } from '../../components/Client/Header.vue'
 
 // nuxt/nuxt.js#8607
 function wrapFunctional(options) {

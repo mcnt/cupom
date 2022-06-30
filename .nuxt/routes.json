@@ -1,23 +1,23 @@
 [
   {
-    "name": "areaEmpresa",
-    "path": "/areaEmpresa",
-    "component": "/home/cecilia/Cecília/cupom/pages/areaEmpresa.vue",
-    "chunkName": "pages/areaEmpresa",
-    "_name": "_249cb956"
+    "name": "admin",
+    "path": "/admin",
+    "component": "/home/thzlima/Cecilia/cupom/pages/admin.vue",
+    "chunkName": "pages/admin",
+    "_name": "_53c1c587"
   },
   {
     "name": "painel",
     "path": "/painel",
-    "component": "/home/cecilia/Cecília/cupom/pages/painel.vue",
+    "component": "/home/thzlima/Cecilia/cupom/pages/painel.vue",
     "chunkName": "pages/painel",
-    "_name": "_0affe1f4"
+    "_name": "_14df12f5"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/home/cecilia/Cecília/cupom/pages/index.vue",
+    "component": "/home/thzlima/Cecilia/cupom/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_612772aa"
+    "_name": "_2252718a"
   }
 ]

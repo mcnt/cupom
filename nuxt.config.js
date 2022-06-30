@@ -54,16 +54,38 @@ export default {
     modules: [
         // https://go.nuxtjs.dev/axios
         '@nuxtjs/axios',
+        // https://auth.nuxtjs.org/guide/setup
+        '@nuxtjs/auth-next',
     ],
 
     // Axios module configuration: https://go.nuxtjs.dev/config-axios
     axios: {
         // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-        baseURL: '/',
+        baseURL: process.env.API_URL,
     },
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {},
+
+    auth: {
+        strategies: {
+            api: {
+                provider: 'laravel/jwt',
+                url: process.env.API_URL,
+                endpoints: {
+                    login: { url: '/api/user/login', method: 'post' },
+                    user: { url: '/api/user/show', method: 'post' },
+                },
+                token: {
+                    property: 'token',
+                    maxAge: 60 * 60,
+                },
+                refreshToken: {
+                    maxAge: 20160 * 60,
+                },
+            },
+        },
+    },
 
     server: {
         host: '0.0.0.0',

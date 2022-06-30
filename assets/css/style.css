@@ -1,7 +1,7 @@
 /*  */
 #open {
-    background: #1474ff url('../img/bg.png') no-repeat;
-    background-size: cover cover;
+    background: #1474ff url('../img/bg.png') no-repeat bottom left;
+    background-size: cover;
     min-height: 100vh;
 }
 
@@ -16,7 +16,6 @@
     padding-right: 20px !important;
     padding-bottom: 16px !important;
     padding-top: 8px !important;
-
 }
 .con-vs-dialog .vs-dialog {
     max-width: 600px !important;
@@ -32,6 +31,5 @@
 
 #header {
     min-height: 350px;
-    background: #1474ff url('../img/AreadaEmpresa.png') no-repeat;
-    
+    background: url('../img/AreadaEmpresa.png') no-repeat;
 }

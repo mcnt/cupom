@@ -2,12 +2,12 @@
     <div class="flex">
         <div
             class="p-8 rounded-l-xl flex cursor-pointer"
-            :class="coupon.icon ? 'bg-blue-600' : 'bg-gray-500'"
+            :class="coupon.product_id ? 'bg-blue-600' : 'bg-gray-500'"
         >
             <img
                 :src="
                     require(`@/assets/img/${
-                        coupon.icon ? coupon.icon : 'plus'
+                        coupon.product_id ? coupon.product_id : 'plus'
                     }.png`)
                 "
                 class="w-20"
@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-</template> 
+</template>
 
 <script>
 export default {
