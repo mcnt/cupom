@@ -62,7 +62,7 @@ import { mapActions } from 'vuex'
 export default {
     name: 'ClientHeader',
     data: () => ({
-        cpf: '02060888093',
+        cpf: '98230628203',
         valid: null,
     }),
     computed: {
@@ -72,7 +72,11 @@ export default {
     },
     methods: {
         checkCpf(value) {
+            this.$vs.loading()
             this.valid = cpf.isValid(value)
+            setTimeout(() => {
+                this.$vs.loading.close()
+            }, 2000)
         },
         ...mapActions({
             getClient: 'client/getClient',

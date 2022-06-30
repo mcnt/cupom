@@ -5,7 +5,7 @@
             <!--  -->
             <h3 class="mt-24 mb-4 text-4xl font-bold">Área da Empresa</h3>
             <!--  -->
-            <p>
+            <p v-if="$auth.user.store">
                 {{ $auth.user.store.name }} | CNPJ: {{ $auth.user.store.cnpj }}
             </p>
             <!--  -->
@@ -72,9 +72,15 @@ export default {
             getUsers: 'admin/getUsers',
         }),
         async deleteUser(id) {
-            await this.$axios.$delete(`api/user/list/${id}`).then(() => {
-                this.getUsers()
-            })
+            this.$vs.loading()
+            await this.$axios
+                .$delete(`api/user/list/${id}`)
+                .then(() => {
+                    this.getUsers()
+                })
+                .finally(() => {
+                    this.$vs.loading.close()
+                })
         },
         editUser(user) {
             this.changePopup()

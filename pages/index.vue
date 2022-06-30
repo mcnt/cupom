@@ -54,7 +54,7 @@ export default {
     data: () => ({
         show: false,
         form: {
-            cpf: '70364669012',
+            cpf: '',
             password: '123456',
         },
     }),
