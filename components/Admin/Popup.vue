@@ -72,7 +72,7 @@ import { mapMutations, mapActions } from 'vuex'
 
 export default {
     name: 'AdminPopup',
-
+    
     components: {
         VuePassword,
     },
@@ -83,7 +83,18 @@ export default {
             cpf: '',
             email: '',
             password: '',
+         
         },
+        store:[
+            {
+                id: 1,
+                name:'TESTE 1',
+            },
+            {
+                id: 2,
+                name:'TESTE 2',
+            }
+        ]
     }),
 
     computed: {
@@ -102,7 +113,6 @@ export default {
         //
         async create() {
             //
-            this.user.store_id = this.$auth.user.store.id
             this.user.cpf = this.user.cpf.replace(/[^0-9]/g, '')
 
             //
@@ -116,6 +126,7 @@ export default {
                         cpf: '',
                         email: '',
                         password: '',
+                        
                     }
                 })
                 .catch(() => {})

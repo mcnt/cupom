@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <vs-prompt
             width="550px"
             title="Criar Voucher"
@@ -71,11 +72,12 @@ export default {
     data: () => ({
         products: [],
         voucher: {
+           
             product_id: '',
             price: '',
         },
         money: {
-            decimal: ',',
+            decimal: ',',   
             thousands: '.',
             prefix: 'R$ ',
             suffix: '',
@@ -118,6 +120,7 @@ export default {
             await this.$axios
                 .$post('api/ticket/create', {
                     client_id: this.client.id,
+                    store_id: this.$auth.user.store_id,
                     product_id: this.voucher.product_id,
                     value: this.voucher.price
                         .replace('R$ ', '')

@@ -15,10 +15,15 @@
             />
         </div>
         <div class="p-3 border border-gray-500 w-full rounded-r-xl">
+
             <div v-if="Object.keys(coupon).length !== 0">
+                <div @click.prevent="deleteVoucher(coupon.id)">
+                 <img :src="require(`@/assets/img/excluir.png`)" />
+                </div>
                 <div>
-                    <!-- <h3>{{ coupon.store.name }}</h3> -->
-                    <h1>R${{ coupon.discount }} de desconto</h1>
+                    <h3>{{coupon.user.store.name}}}</h3>
+                    <h3>Produto: R${{coupon.value}}</h3>
+                    <h1 class="text-2xl bg-color">R${{ coupon.discount }} de desconto</h1>
                 </div>
                 <div v-if="coupon.note_number">
                     Nota fiscal #{{ coupon.note_number }}
@@ -54,6 +59,17 @@ export default {
             changePopupVoucher: 'client/changePopupVoucher',
             changePopupFiscal: 'client/changePopupFiscal',
         }),
+        async deleteVoucher(id) {
+            this.$vs.loading()
+            await this.$axios
+                .$delete(`api/ticket/delete/${id}`)
+                .then(() => {
+                    this.deleteVoucher()
+                })
+                .finally(() => {
+                    this.$vs.loading.close()
+                })
+        },
     },
 }
 </script>

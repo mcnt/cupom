@@ -1,12 +1,14 @@
 <template>
     <div>
         <!--  -->
+
         <header id="header" class="p-8 text-white text-center">
+            <Navbar />  
             <!--  -->
             <h3 class="mt-24 mb-4 text-4xl font-bold">Área da Empresa</h3>
             <!--  -->
             <p v-if="$auth.user.store">
-                {{ $auth.user.store.name }} | CNPJ: {{ $auth.user.store.cnpj }}
+                {{ $auth.user.store_id}} | CNPJ: {{ $auth.user.store.cnpj }}
             </p>
             <!--  -->
             <div class="flex items-center justify-center">
@@ -74,7 +76,7 @@ export default {
         async deleteUser(id) {
             this.$vs.loading()
             await this.$axios
-                .$delete(`api/user/list/${id}`)
+                .$delete(`api/user/delete/${id}`)
                 .then(() => {
                     this.getUsers()
                 })

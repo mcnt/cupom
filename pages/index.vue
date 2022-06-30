@@ -9,10 +9,9 @@
                 <form @submit.prevent="login()">
                     <!--  -->
                     <div class="mb-4">
-                        <label class="pl-5 pb-4" for="cpf">CPF</label>
+                        <label class="pl-5 pb-4" for="login">CPF ou Email</label>
                         <input
-                            v-model="form.cpf"
-                            v-mask="'###.###.###-##'"
+                            v-model="form.login"
                             class="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-black focus:border-4"
                             type="text"
                         />
@@ -54,7 +53,7 @@ export default {
     data: () => ({
         show: false,
         form: {
-            cpf: '',
+            login: '',
             password: '123456',
         },
     }),
@@ -64,7 +63,7 @@ export default {
             await this.$auth
                 .loginWith('api', {
                     data: {
-                        cpf: this.form.cpf.replace(/[^0-9]/g, ''),
+                        login: this.form.login,
                         password: this.form.password,
                     },
                 })

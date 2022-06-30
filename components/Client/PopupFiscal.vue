@@ -20,9 +20,13 @@
                 </h2>
 
                 <div>
+                    <input
+                        v-model="ticket_id"
+                        type="hidden"
+                    />
                     <label for="">Insira o número da nota</label>
                     <input
-                        v-model="fiscal"
+                        v-model="note_number"
                         type="text"
                         class="form-select appearance-none block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding bg-no-repeat border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                     />
@@ -34,8 +38,8 @@
                         type="submit"
                     >
                         Atribuir
-                    </button>
-                </div>
+                    </button>       
+                 </div>
             </form>
         </vs-prompt>
     </div>
@@ -45,7 +49,11 @@
 import { mapMutations, mapActions } from 'vuex'
 export default {
     name: 'PopupFiscal',
-
+   data: () => ({
+        note_number: "",
+        ticket_id: 1,
+    
+    }),
     computed: {
         popupFiscal() {
             return this.$store.state.client.popupFiscal
@@ -55,8 +63,9 @@ export default {
     methods: {
         async setFiscal() {
             await this.$axios
-                .$post('fiscal_rota', {
-                    fiscal: this.fiscal,
+                .$post('/api/ticket/edit', {
+                   note_number: this.note_number,
+                   ticket_id: this.ticket_id 
                 })
                 .then(() => {
                     this.getClient()

@@ -10,12 +10,12 @@
                 <div class="grid grid-cols-3 gap-14">
                     <Voucher
                         v-for="(v, i) in 5 - client.ticket.length"
-                        :key="i"
+                        :key="i+'a'"
                         :coupon="{}"
                     />
                     <Voucher
                         v-for="(v, i) in client.ticket"
-                        :key="i"
+                        :key="i+'b'"
                         :coupon="v"
                     />
                 </div>
