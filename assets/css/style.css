@@ -30,6 +30,6 @@
 }
 
 #header {
-    min-height: 350px;
     background: url('../img/AreadaEmpresa.png') no-repeat;
+    background-size: cover;
 }
