@@ -9,7 +9,7 @@
                     <img :src="require(`@/assets/img/sair.png`)" />
                 </div>
                 <h2 class="text-3xl font-bold text-center text-blue-500">
-                    Cadastrar Usuário
+                    Cadastrar Lojista
                 </h2>
                 <div>
                     <div>
@@ -108,7 +108,7 @@ export default {
             //
             await this.$axios
                 .$post(
-                    `/api/user/${this.userEdit ? 'create' : 'edit'}`,
+                    `/api/user/create`,
                     this.userEdit ?? this.user
                 )
                 .then(() => {

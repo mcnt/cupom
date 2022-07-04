@@ -51,7 +51,7 @@
                         class="bg-blue-600 text-white py-2 px-6 rounded w-56"
                         type="submit"
                     >
-                        Editar no sistema
+                        Editar Lojista
                     </button>
                 </div>
             </form>

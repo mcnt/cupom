@@ -6,7 +6,7 @@
             @click.prevent="coupon.product_id ? '' : changePopupVoucher()"
         >
             <img
-                class="w-14 h-14 m-8"
+         
                 :src="
                     require(`@/assets/img/${
                         coupon.product_id ? coupon.product_id : 'plus'
@@ -23,10 +23,12 @@
                 >
                     <img :src="require(`@/assets/img/excluir.png`)" />
                 </div>
-                <h3>{{ coupon.user.store.name }}</h3>
-                <h3>Produto: R${{ coupon.value }}</h3>
+              
+            
+                <h3> {{coupon.store.name}}</h3>
+                <h3>Produto: {{coupon.product.type}} | R${{ parseFloat(coupon.value).toFixed(2).toString().replace(".", ",") }}</h3>
                 <h1 class="text-2xl bg-color">
-                    R${{ coupon.discount }} de desconto
+                    R${{ parseFloat(coupon.discount).toFixed(2).toString().replace(".", ",") }} de desconto
                 </h1>
                 <div v-if="coupon.note_number">
                     Nota fiscal #{{ coupon.note_number }}

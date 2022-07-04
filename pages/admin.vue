@@ -1,7 +1,7 @@
 <template>
     <div>
         <!--  -->
-        <h3 class="text-3xl font-bold p-16 pb-6">Lista de Usuários</h3>
+        <h3 class="text-3xl font-bold p-16 pb-6" >Lista de Lojista</h3>
         <div class="container mx-auto pb-10 space-y-8">
             <div v-for="(u, i) in users" :key="i" :users="u" class="flex">
                 <h3 class="w-10/12 p-3 bg-blue-200 text-3xl text-gray-800">

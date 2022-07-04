@@ -1,7 +1,6 @@
 <template>
-    <div class="flex justify-center space-x-20">
-        <img :src="require('@/assets/img/sdecti.png')" alt="" />
-        <img :src="require('@/assets/img/sdecti-icon.png')" alt="" />
+    <div class="flex justify-center">
+        <h1 class="text-4xl text-white mb-4">Programa de Reestrutaração Lares de Pernambuco - PRELEPE</h1>
     </div>
 </template>
 

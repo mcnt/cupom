@@ -54,7 +54,7 @@ export default {
         show: false,
         form: {
             login: '',
-            password: '123456',
+            password: '',
         },
     }),
 

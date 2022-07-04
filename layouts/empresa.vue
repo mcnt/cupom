@@ -3,7 +3,7 @@
         <header id="header" class="p-8 text-white text-center">
             <Navbar />
             <!--  -->
-            <h3 class="mt-24 mb-4 text-4xl font-bold">Área do Gestor</h3>
+            <h3 v-if="$auth.user.level === 1" class="mt-24 mb-4 text-4xl font-bold">Área do Gestor</h3>
             <!--  -->
             <p v-if="$auth.user.store_id">
                 {{ store.name }} - CNPJ:
@@ -12,6 +12,7 @@
             <!--  -->
             <div class="flex items-center justify-center space-x-4">
                 <button
+                    v-if="$auth.user.level === 1"
                     class="bg-blue-600 text-white h-12 w-64 rounded-lg mt-5 text-base button"
                     @click.prevent="registerUser()"
                 >
@@ -21,7 +22,7 @@
                     class="bg-blue-600 text-white h-12 w-64 rounded-lg mt-5 text-base button pt-3"
                     to="/relatorios"
                 >
-                    Relatórios
+                    Relatório
                 </nuxt-link>
             </div>
             <!--  -->

@@ -2,7 +2,10 @@
     <nav class="text-white flex justify-end space-x-4">
         <span>
             Olá <b>{{ $auth.user.name }}</b>
-        </span>
+        </span> <NuxtLink v-if="$auth.user.level === 2" to="/relatorios">
+            Relatório
+        </NuxtLink>
+
         <NuxtLink v-if="$auth.user.level === 1" to="/admin">
             Área do Gestor
         </NuxtLink>

@@ -6,7 +6,7 @@
                 <h4 class="text-blue-500 text-center text-4xl font-bold mb-16">
                     Vouchers
                 </h4>
-
+      
                 <div class="grid sm:grid-cols-3 gap-14">
                     <Voucher
                         v-for="(v, i) in client.ticket"

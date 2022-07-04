@@ -28,9 +28,6 @@
                     />
                 </div>
 
-                d
-                {{ ticketFiscal }}
-
                 <div class="flex justify-center">
                     <button
                         class="bg-blue-600 text-white py-2 px-6 rounded w-56"
