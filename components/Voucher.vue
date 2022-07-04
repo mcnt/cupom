@@ -3,6 +3,7 @@
         <div
             class="w-1/3 rounded-l-xl cursor-pointer"
             :class="coupon.product_id ? 'bg-blue-600' : 'bg-gray-500'"
+            @click.prevent="coupon.product_id ? '' : changePopupVoucher()"
         >
             <img
                 class="w-14 h-14 m-8"
