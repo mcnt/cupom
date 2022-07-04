@@ -1,6 +1,7 @@
 export const state = () => ({
     popup: false,
     users: [],
+    edit: '',
 })
 
 export const getters = {
@@ -15,9 +16,15 @@ export const getters = {
 export const mutations = {
     changePopup(state) {
         state.popup = !state.popup
+        if (!state.popup) {
+            state.edit = ''
+        }
     },
     changeUser(state, payload) {
         state.users = payload
+    },
+    changeEdit(state, payload) {
+        state.edit = payload
     },
 }
 

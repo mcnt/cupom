@@ -4,8 +4,9 @@
             Olá <b>{{ $auth.user.name }}</b>
         </span>
         <NuxtLink v-if="$auth.user.level === 1" to="/admin">
-            Criar Usuário
+            Área do Gestor
         </NuxtLink>
+        <NuxtLink to="/painel"> Criar Voucher </NuxtLink>
         <button class="text-yellow-500" @click.prevent="logout()">Sair</button>
     </nav>
 </template>

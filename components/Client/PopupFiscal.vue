@@ -20,10 +20,6 @@
                 </h2>
 
                 <div>
-                    <input
-                        v-model="ticket_id"
-                        type="hidden"
-                    />
                     <label for="">Insira o número da nota</label>
                     <input
                         v-model="note_number"
@@ -32,14 +28,17 @@
                     />
                 </div>
 
+                d
+                {{ ticketFiscal }}
+
                 <div class="flex justify-center">
                     <button
                         class="bg-blue-600 text-white py-2 px-6 rounded w-56"
                         type="submit"
                     >
                         Atribuir
-                    </button>       
-                 </div>
+                    </button>
+                </div>
             </form>
         </vs-prompt>
     </div>
@@ -49,14 +48,20 @@
 import { mapMutations, mapActions } from 'vuex'
 export default {
     name: 'PopupFiscal',
-   data: () => ({
-        note_number: "",
-        ticket_id: 1,
-    
+
+    data: () => ({
+        note_number: '',
     }),
+
     computed: {
         popupFiscal() {
             return this.$store.state.client.popupFiscal
+        },
+        ticketFiscal() {
+            return this.$store.state.client.ticketFiscal
+        },
+        client() {
+            return this.$store.state.client.data
         },
     },
 
@@ -64,12 +69,20 @@ export default {
         async setFiscal() {
             await this.$axios
                 .$post('/api/ticket/edit', {
-                   note_number: this.note_number,
-                   ticket_id: this.ticket_id 
+                    note_number: this.note_number,
+                    ticket_id: this.ticketFiscal,
                 })
                 .then(() => {
-                    this.getClient()
+                    this.getClient(this.client.cpf)
                     this.changePopupFiscal()
+                })
+                .catch((error) => {
+                    this.$vs.notify({
+                        title: 'Error',
+                        text: error.response.data.error,
+                        color: 'danger',
+                        position: 'top-center',
+                    })
                 })
         },
         ...mapMutations({

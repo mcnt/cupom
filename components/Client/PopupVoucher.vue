@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <vs-prompt
             width="550px"
             title="Criar Voucher"
@@ -72,12 +71,11 @@ export default {
     data: () => ({
         products: [],
         voucher: {
-           
             product_id: '',
             price: '',
         },
         money: {
-            decimal: ',',   
+            decimal: ',',
             thousands: '.',
             prefix: 'R$ ',
             suffix: '',
@@ -128,13 +126,14 @@ export default {
                         .replace(',', '.'),
                 })
                 .then(() => {
-                    this.getClient()
+                    this.getClient(this.client.cpf)
                     this.changePopupVoucher()
                 })
-                .catch(() => {
+                .catch((error) => {
+                    this.changePopupVoucher()
                     this.$vs.notify({
                         title: 'Error',
-                        text: 'Error',
+                        text: error.response.data.error,
                         color: 'danger',
                         position: 'top-center',
                     })

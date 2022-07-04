@@ -5,7 +5,7 @@
         <!--  -->
         <h3 class="mt-24 mb-4 text-4xl font-bold">Digite o número do CPF</h3>
         <!--  -->
-        
+
         <!--  -->
         <div class="flex items-center justify-center">
             <form
@@ -23,7 +23,6 @@
                 <button
                     class="flex items-center justify-center px-4 border-l bg-blue-500 rounded-r"
                     type="submit"
-               
                 >
                     <svg
                         class="w-6 h-6 text-white"
@@ -40,7 +39,9 @@
         </div>
         <!--  -->
         <div v-if="client" class="text-center">
-            <h1 class="text-5xl mt-6 font-bold">{{ client.cpf }}</h1>
+            <h1 class="text-5xl mt-6 font-bold">
+                {{ client.cpf | VMask('###.###.###-##') }}
+            </h1>
             <h2 class="text-3xl">{{ client.name }}</h2>
             <p class="mt-6 text-xl">
                 <b>Saldo Disponível:</b> {{ client.balance | currency }} |
@@ -53,13 +54,11 @@
 </template>
 
 <script>
-
 import { mapActions } from 'vuex'
 export default {
     name: 'ClientHeader',
     data: () => ({
         cpf: '',
-        
     }),
     computed: {
         client() {
@@ -67,7 +66,6 @@ export default {
         },
     },
     methods: {
-      
         ...mapActions({
             getClient: 'client/getClient',
         }),

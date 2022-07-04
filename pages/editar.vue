@@ -1,16 +1,9 @@
 <template>
     <div>
-        <vs-prompt title="Teste" :active.sync="popup">
-            <form class="text-black p-4 space-y-8" @submit.prevent="api()">
-                <div
-                    class="flex justify-end cursor-pointer"
-                    @click.prevent="changePopup()"
-                >
-                    <img :src="require(`@/assets/img/sair.png`)" />
-                </div>
-                <h2 class="text-3xl font-bold text-center text-blue-500">
-                    Cadastrar Usuário
-                </h2>
+        <!--  -->
+        <h3 class="text-3xl font-bold p-16 pb-6">Editar Usuário</h3>
+        <div class="container mx-auto pb-10 space-y-8">
+            <form @submit.prevent="editUser()">
                 <div>
                     <div>
                         <label class="pl-5 pb-4 font-medium" for="">
@@ -58,70 +51,74 @@
                         class="bg-blue-600 text-white py-2 px-6 rounded w-56"
                         type="submit"
                     >
-                        Cadastrar no sistema
+                        Editar no sistema
                     </button>
                 </div>
             </form>
-        </vs-prompt>
+        </div>
+        <!--  -->
     </div>
 </template>
-
 <script>
 import VuePassword from 'vue-password'
-import { mapMutations, mapActions } from 'vuex'
-
 export default {
-    name: 'AdminPopup',
+    name: 'PageEdit',
 
     components: {
         VuePassword,
     },
 
+    layout: 'empresa',
+
     data: () => ({
-        setEdit: false,
         user: {
             name: '',
-            cpf: '',
             email: '',
+            cpf: '',
             password: '',
         },
     }),
 
-    computed: {
-        popup() {
-            return this.$store.state.admin.popup
-        },
+    created() {
+        this.getUser()
     },
 
     methods: {
-        ...mapMutations({
-            changePopup: 'admin/changePopup',
-        }),
-        ...mapActions({
-            getUsers: 'admin/getUsers',
-        }),
-        //
-        async api() {
-            //
-            this.user.cpf = this.user.cpf.replace(/[^0-9]/g, '')
+        async getUser() {
+            const users = await this.$axios.$get('api/user/list')
 
-            //
+            this.user = users.find(
+                (e) => e.id === parseInt(this.$route.query.id)
+            )
+        },
+
+        async editUser() {
+            this.$vs.loading()
+
+            this.user.user_id = this.user.id
+
             await this.$axios
-                .$post(
-                    `/api/user/${this.userEdit ? 'create' : 'edit'}`,
-                    this.userEdit ?? this.user
-                )
-                .then(() => {
-                    this.changePopup()
-                    this.getUsers()
-                    this.user = {
-                        name: '',
-                        cpf: '',
-                        email: '',
-                        password: '',
-                    }
+                .$post(`api/user/edit`, this.user)
+                .then((data) => {
+                    this.$vs.notify({
+                        title: 'Sucesso',
+                        text: data.message,
+                        color: 'green',
+                        position: 'top-center',
+                    })
+                    this.$router.push('admin')
                 })
-                .catch(() => {})
+                .catch((error) => {
+                    this.$vs.notify({
+                        title: 'Error',
+                        text: error.response.data.error,
+                        color: 'danger',
+                        position: 'top-center',
+                    })
+                })
+                .finally(() => {
+                    this.$vs.loading.close()
+                })
         },
     },
 }

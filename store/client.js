@@ -2,6 +2,7 @@ export const state = () => ({
     data: null,
     popupVoucher: false,
     popupFiscal: false,
+    ticketFiscal: '',
 })
 
 export const getters = {
@@ -19,6 +20,9 @@ export const getters = {
 export const mutations = {
     changeClient(state, payload) {
         state.data = payload
+    },
+    changeTicketFiscal(state, payload) {
+        state.ticketFiscal = payload
     },
     changePopupVoucher(state) {
         state.popupVoucher = !state.popupVoucher

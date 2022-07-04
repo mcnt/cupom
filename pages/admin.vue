@@ -1,29 +1,6 @@
 <template>
     <div>
         <!--  -->
-
-        <header id="header" class="p-8 text-white text-center">
-            <Navbar />  
-            <!--  -->
-            <h3 class="mt-24 mb-4 text-4xl font-bold">Área da Empresa</h3>
-            <!--  -->
-            <p v-if="$auth.user.store">
-                {{ $auth.user.store_id}} | CNPJ: {{ $auth.user.store.cnpj }}
-            </p>
-            <!--  -->
-            <div class="flex items-center justify-center">
-                <button
-                    class="bg-blue-600 text-white h-12 w-64 rounded-lg mt-5 text-base button"
-                    @click.prevent="changePopup()"
-                >
-                    Cadastrar Usuários
-                </button>
-            </div>
-            <!--  -->
-        </header>
-
-        <AdminPopup />
-
         <h3 class="text-3xl font-bold p-16 pb-6">Lista de Usuários</h3>
         <div class="container mx-auto pb-10 space-y-8">
             <div v-for="(u, i) in users" :key="i" :users="u" class="flex">
@@ -69,6 +46,7 @@ export default {
     methods: {
         ...mapMutations({
             changePopup: 'admin/changePopup',
+            changeEdit: 'admin/changeEdit',
         }),
         ...mapActions({
             getUsers: 'admin/getUsers',
@@ -80,12 +58,21 @@ export default {
                 .then(() => {
                     this.getUsers()
                 })
+                .catch((error) => {
+                    this.$vs.notify({
+                        title: 'Error',
+                        text: error.response.data.error,
+                        color: 'danger',
+                        position: 'top-center',
+                    })
+                })
                 .finally(() => {
                     this.$vs.loading.close()
                 })
         },
         editUser(user) {
-            this.changePopup()
+            // this.changeEdit(user)
+            this.$router.push(`editar?id=${user.id}`)
         },
     },
 }
